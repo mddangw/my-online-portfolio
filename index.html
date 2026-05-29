@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyen Phan Minh Dang | Process & Control Room Engineer Portfolio</title>
+    <style>
+        /* Modern Reset and Design Tokens */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #0284c7;      /* Petrochemical/Operations Blue */
+            --secondary: #0d9488;    /* Gas/LNG Teal */
+            --dark: #0f172a;         /* Deep slate for text */
+            --light: #f8fafc;        /* Off-white background */
+            --border: #e2e8f0;       /* Divider lines */
+            --text-muted: #64748b;   /* Subtitles */
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Fixed Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+        }
+
+        nav .logo {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero / Introduction Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #e0f2fe 0%, #ccfbf1 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            padding-top: 80px;
+        }
+
+        .hero-badge {
+            background: #ffffff;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            color: var(--secondary);
+            font-size: 0.85rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin-bottom: 35px;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.35);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--dark);
+            border: 2px solid var(--dark);
+        }
+
+        .btn-secondary:hover {
+            background: var(--dark);
+            color: white;
+        }
+
+        /* Global Section Layout */
+        section {
+            padding: 90px 8%;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 45px;
+            color: var(--dark);
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 45px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 12px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* About & Quick Metadata Grid */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .metadata-table {
+            width: 100%;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.01);
+            border: 1px solid var(--border);
+        }
+
+        .metadata-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .metadata-table td {
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.95rem;
+        }
+
+        .metadata-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .metadata-table td.label {
+            color: var(--text-muted);
+            font-weight: 500;
+            width: 35%;
+        }
+
+        .metadata-table td.value {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* Technical Competencies Framework */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.01);
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .skill-icon {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .skill-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card ul li {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .skill-card ul li::before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Work History Timeline */
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 30px;
+            border-left: 3px solid var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 45px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            width: 16px;
+            height: 16px;
+            background: white;
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            left: -41px;
+            top: 5px;
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .timeline-company {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+
+        .timeline-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .contributions-box {
+            background: #f0fdfa;
+            border-left: 4px solid var(--secondary);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .contributions-box h4 {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .contributions-box ul {
+            list-style-type: square;
+            padding-left: 15px;
+            font-size: 0.9rem;
+            color: #115e59;
+        }
+
+        /* Credentials & Honors Section */
+        .honors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .honor-item {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .honor-icon {
+            font-size: 1.8rem;
+            background: #f0f9ff;
+            padding: 10px;
+            border-radius: 8px;
+            color: var(--primary);
+        }
+
+        .honor-details h4 {
+            font-size: 0.95rem;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .honor-details p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Contact Details & Reference Grid */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+        }
+
+        .contact-info h3, .references h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .contact-link-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 18px;
+            font-size: 1rem;
+        }
+
+        .contact-link-item a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .ref-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .ref-card {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .ref-card h4 {
+            font-size: 1rem;
+            color: var(--dark);
+            margin-bottom: 2px;
+        }
+
+        .ref-card .title {
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .ref-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer Accent */
+        footer {
+            background: var(--dark);
+            color: #94a3b8;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+            border-top: 1px solid #1e293b;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .hero h1 { font-size: 2.3rem; }
+            .about-container, .contact-container { grid-template-columns: 1fr; gap: 30px; }
+            .ref-cards { grid-template-columns: 1fr; }
+            section { padding: 60px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fixed Header Navigation -->
+    <nav>
+        <div class="logo">MINH DANG NGUYEN PHAN</div>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#competencies">Expertise</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Showcase Section -->
+    <div class="hero" id="hero">
+        <div class="hero-badge">⚡ Process Engineer &amp; Control Room Operator</div>
+        <h1>Nguyen Phan Minh Dang</h1>
+        <p>Leveraging over 2 years of rigorous petrochemical plant operation and process data analysis to design safer, highly optimized industrial systems.</p>
+        <div class="cta-group">
+            <a href="#experience" class="btn btn-primary">Explore Experience</a>
+            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        </div>
+    </div>
+
+    <!-- About Me & Profile Specifications -->
+    <section id="about">
+        <h2>Professional Profile</h2>
+        <div class="about-container">
+            <div class="about-text">
+               <!-- Professional Profile Section -->
+<section id="profile" style="margin-bottom: 30px;">
+  
+    
+    <!-- Áp dụng thuộc tính justify và line-height đồng bộ cho toàn bộ các đoạn văn -->
+    <div class="profile-content" style="text-align: justify; text-justify: inter-word; line-height: 1.6; color: var(--text-muted); font-size: 0.95rem;">
+        <p style="margin-bottom: 12px;">
+<p style="margin-bottom: 12px;">
+           <strong>Welcome to my portfolio.</strong>
+        </p>
+<p style="margin-bottom: 12px;">
+
+            I am a dedicated Chemical Engineer with specialized field and console operations background in high-hazard petrochemical environments.
+        </p>
+        
+        <p style="margin-bottom: 12px;">
+            My career objective centers on translating concrete, hands-on facility operating insights directly into engineering design pipelines. Having executed complex daily tasks utilizing technical diagrams, I aim to master creating and designing P&amp;IDs, Cause and Effect charts, and Logic Diagrams to scale robust process safety architectures over the next two years.
+        </p>
+        
+        <p style="margin-bottom: 0;">
+            With an educational foundation from Ho Chi Minh University of Technology, I approach complex mechanical challenges with practical, data-centric intuition.
+        </p>
+    </div>
+</section>
+            </div>
+            <div class="metadata-table">
+                <table>
+                    <tr>
+                        <td class="label">Major</td>
+                        <td class="value">Chemical Engineering</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Alma Mater</td>
+                        <td class="value">HCMUT (GPA: 8.71)</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Birthday</td>
+                        <td class="value">November 11, 2001</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Age</td>
+                        <td class="value"><span id="live-age">24</span> Years Old</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Location</td>
+                        <td class="value">Phu My, HCMC</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Competencies Segment -->
+    <section id="competencies" style="background-color: #ffffff;">
+        <h2>Core Competencies</h2>
+        <div class="skills-container">
+            <!-- Box 1 -->
+            <div class="skill-card">
+                <div class="skill-icon">🏭</div>
+                <h3>Plant Operations</h3>
+                <ul>
+                    <li>Naphtha / LPG cracking processes</li>
+                    <li>Ethylene &amp; Propylene distillation</li>
+                    <li>LNG regasification loop dynamics</li>
+                    <li>Tank Farms &amp; Cryogenic storage</li>
+                </ul>
+            </div>
+            <!-- Box 2 -->
+            <div class="skill-card">
+                <div class="skill-icon">📄</div>
+                <h3>Technical Design Docs</h3>
+                <ul>
+                    <li>P&amp;ID &amp; Isometric markups</li>
+                    <li>Interlock Logic Diagrams</li>
+                    <li>Cause &amp; Effect mappings</li>
+                    <li>HAZID / HAZOP reviews &amp; SOPs</li>
+                </ul>
+            </div>
+            <!-- Box 3 -->
+            <div class="skill-card">
+                <div class="skill-icon">💻</div>
+                <h3>Software &amp; Tools</h3>
+                <ul>
+                    <li>DCS Console HMI (Yokogawa)</li>
+                    <li>Aspen Hysys simulation modeling</li>
+                    <li>AutoCAD 2D &amp; Plant 3D drafting</li>
+                    <li>7 Quality Control (QC) tools</li>
+                </ul>
+            </div>
+            <!-- Box 4 -->
+            <div class="skill-card">
+                <div class="skill-icon">🛡️</div>
+                <h3>Safety &amp; Machinery</h3>
+                <ul>
+                    <li>Root Cause Analysis (5-Why, 4M)</li>
+                    <li>Pre-Incident Plans &amp; ERP systems</li>
+                    <li>Pump $NPSH_A$ &amp; inventory tracking</li>
+                    <li>Compressor, turbine &amp; pump loops</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+   <!-- Professional Experience Timeline -->
+    <section id="experience">
+        <h2>Professional Timeline</h2>
+        <div class="timeline">
+            
+            <!-- Job 1 -->
+            <div class="timeline-item">
+                <div class="timeline-date">June 2025 – Present</div>
+                <div class="timeline-title">Control Room Operator</div>
+                <div class="timeline-company">Cai Mep LNG Terminal (CM LNG)</div>
+                <!-- SỬA ĐỔI: Chuyển thành danh sách ul/li để tự động xuống dòng và canh lề đẹp mắt -->
+                <ul class="timeline-desc-list" style="list-style-type: disc; padding-left: 20px; color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px;">
+                    <li style="margin-bottom: 8px;">Pre-commissioning and commissioning for LNG Terminal and Re-gasification plant.</li>
+                    <li style="margin-bottom: 8px;">Review and propose changes or improvements for the process (control loop, work aid) during pre-commissioning and commissioning phase. Develop, review, and maintain process documentation, operating procedures, and manuals.</li>
+                    <li style="margin-bottom: 8px;">Control and monitor LNG tank and terminal operations, adjust parameters via DCS; identify root causes of alarms/abnormalities and implement corrective actions or guide Field Operators to restore normal conditions.</li>
+                    <li style="margin-bottom: 8px;">Monitor, analyze, and evaluate machinery and equipment performance to ensure safe, stable, and efficient operations. Monitor and measure custody transfer of LNG and BOG losses. Carry out energy balances and determine loss and account for gas.</li>
+                    <li style="margin-bottom: 8px;">Prepare technical reports on process performance, LOTO activities, P&amp;ID markups, and monthly calculations for CNG/LNG truck loading bays and LNG ship exports.</li>
+                    <li style="margin-bottom: 8px;">Proceed to do basic calculation: Tank Inventory, Product movement, Product loss during flaring mode, pump’s NPSHA, etc.</li>
+                    <li style="margin-bottom: 8px;">Manage and optimize product loss during emergencies or flare mode operations; prepare and conduct Pre-Incident Plan (PIP) drills.</li>
+                    <li style="margin-bottom: 8px;">Provide training, guidance, and technical support to operations personnel on process-related matters.</li>
+                    <li style="margin-bottom: 8px;">Suggest terminal improvements and lead its implementation through the corresponding management of change process.</li>
+                    <li style="margin-bottom: 8px;">Control and support Shift Supervisor in controlling working schedule, arrange working time for other colleagues, allocate OT hours of Workers and Operators. Monitor, analyze, and evaluate machinery and equipment performance to ensure safe, stable, and efficient operations.</li>
+                    <li style="margin-bottom: 8px;">Be part of Emergency Response Team and attend to implement Emergency Response Plan (ERP).</li>
+                    <li style="margin-bottom: 8px;">Control and monitor shipping activities as well as shipment document and related ones.</li>
+                    <li style="margin-bottom: 8px;">Provide operational support for assignments and tasks delegated by the Shift Supervisor or Operations Manager.</li>
+                </ul>
+                <div class="contributions-box">
+                    <h4>Key Operations Contributions</h4>
+                    <ul>
+                        <li>Proposed critical structural adjustments to the LNG-to-ORV control loop layout for streamlined operational output.</li>
+                        <li>Successfully isolated and identified the core mechanical root cause leading to an un-triggered LNG BOG Compressor trip.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Job 2 -->
+            <div class="timeline-item">
+                <div class="timeline-date">October 2024 – December 2024</div>
+                <div class="timeline-title">Boardman Candidate</div>
+                <div class="timeline-company">Long Son Petrochemicals (LSP)</div>
+                <p class="timeline-desc">
+                    Familiarized console operations using Yokogawa DCS interfaces. Monitored active BOG configurations, twin-screw compressors, transfer loops, and FGS frameworks. Prepared complex LOTO isolates and certified functional SIL signal tests via C&amp;E maps.
+                </p>
+            </div>
+
+            <!-- Job 3 -->
+            <div class="timeline-item">
+                <div class="timeline-date">June 2023 – June 2025</div>
+                <div class="timeline-title">Field Engineer</div>
+                <div class="timeline-company">Long Son Petrochemicals (LSP)</div>
+                <!-- SỬA ĐỔI: Chuyển thành danh sách ul/li để đồng bộ giao diện với Job 1 -->
+                <ul class="timeline-desc-list" style="list-style-type: disc; padding-left: 20px; color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px;">
+                    <li style="margin-bottom: 8px;">Manage tank system conditions and perform risk assessments when receiving an assignment/product order from other departments to minimize potential issues affecting operating conditions and product movement.</li>
+                    <li style="margin-bottom: 8px;">Familiar with many types of tanks (floating roof tank, dome roof tank, spherical tank, cryogenic double wall tank) and other auxiliary equipment (screw compressor, reciprocating compressor, pumps, steam turbine…)</li>
+                    <li style="margin-bottom: 8px;">Review technical specifications and scope of work for contractors, ensuring their operations adhered to safety conditions.</li>
+                    <li style="margin-bottom: 8px;">Work with P&amp;IDs and isometric drawings to do line check, PSSR and clear punches before operating the system (in Pre-commissioning phase and modification job).</li>
+                    <li style="margin-bottom: 8px;">Review HAZID, HAZOP, contribute to the development and review of SOPs.</li>
+                    <li style="margin-bottom: 8px;">Maintain 5S standards to ensure work efficiency and utilize the 7 QC tools to analyze and identify root causes.</li>
+                    <li style="margin-bottom: 8px;">Attend Focus Improvement program to contribute ideas to save company operation cost.</li>
+                    <li style="margin-bottom: 8px;">Perform training sessions (P&amp;IDs, Control Narrative, Product movement, SOPs) for the new Field Engineers.</li>
+                    <li style="margin-bottom: 8px;">Supervise a team of 5 workers to do daily operations, control their working performance and allocate overtime for them.</li>
+                </ul>
+                <div class="contributions-box">
+                    <h4>Key Operations Contributions</h4>
+                    <ul>
+                        <li>Designed a new operational sequence for 1,3-Butadiene chilling pumps to substantially mitigate raw volume loss.</li>
+                        <li>Implemented a secure, sealed sampling technique for 1,3-Butadiene to drastically reduce operator chemical exposure risks.</li>
+                        <li>Minimized raw LPG venting losses during critical tank cooldown sequences via controlled top-point non-condensable release.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Honors, Credentials & Scholarships -->
+    <section id="honors" style="background-color: #ffffff;">
+        <h2>Certificates &amp; Achievements</h2>
+        <div class="honors-grid">
+            <div class="honor-item">
+                <div class="honor-icon">🎓</div>
+                <div class="honor-details">
+                    <h4>Honeywell UOP Scholarship</h4>
+                    <p>Awarded in 2023 for academic excellence</p>
+                </div>
+            </div>
+            <div class="honor-item">
+                <div class="honor-icon">🏆</div>
+                <div class="honor-details">
+                    <h4>Top 68 Heineken MT</h4>
+                    <p>Management Trainee Finalist (2025)</p>
+                </div>
+            </div>
+            <div class="honor-item">
+                <div class="honor-icon">📝</div>
+                <div class="honor-details">
+                    <h4>ICCE 6th Paper Author</h4>
+                    <p>International Conference on Chemical Engineering</p>
+                </div>
+            </div>
+            <div class="honor-item">
+                <div class="honor-icon">📊</div>
+                <div class="honor-details">
+                    <h4>TOEIC 920 &amp; ISO 9001</h4>
+                    <p>Certified Professional English &amp; QMS Awareness</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Details & Professional References Grid -->
+    <section id="contact">
+        <h2>Connect With Me</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contact Coordinates</h3>
+                <div class="contact-link-item">
+                    <span>📞</span>
+                    <a href="tel:0327304019">032.730.4019</a>
+                </div>
+                <div class="contact-link-item">
+                    <span>✉️</span>
+                    <a href="mailto:npmdang@gmail.com">npmdang@gmail.com</a>
+                </div>
+                <div class="contact-link-item">
+                    <span>💼</span>
+                    <a href="#" target="_blank">LinkedIn Profile Portfolio</a>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 20px;">
+                    Available for process engineering design, technical operations evaluation, risk consultation, and industrial plant automation opportunities.
+                </p>
+            </div>
+            <div class="references">
+                <h3>Industry References</h3>
+                <div class="ref-cards">
+                    <div class="ref-card">
+                        <h4>Mr. Pham Van Vo</h4>
+                        <div class="title">Tank Farm Lead Engineer (LSP)</div>
+                        <p>📞 0983.448.836</p>
+                        <p>✉️ vopv@lsp.com</p>
+                    </div>
+                    <div class="ref-card">
+                        <h4>Mr. Nguyen Thanh Canh</h4>
+                        <div class="title">Operation Supervisor (CM LNG)</div>
+                        <p>📞 0909.717.157</p>
+                        <p>✉️ ntcanh@cmlngvn.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Copyright Block -->
+    <footer>
+        <p>&copy; 2026 Nguyen Phan Minh Dang. Processed with professional engineering integrity.</p>
+    </footer>
+
+    <!-- Script to strictly auto-maintain age calculations using 11/11/2001 -->
+    <script>
+        function calculateLiveAge(birthDateStr) {
+            const currentDay = new Date();
+            const birthday = new Date(birthDateStr);
+            let ageResult = currentDay.getFullYear() - birthday.getFullYear();
+            const monthDifference = currentDay.getMonth() - birthday.getMonth();
+            if (monthDifference < 0 || (monthDifference === 0 && currentDay.getDate() < birthday.getDate())) {
+                ageResult--;
+            }
+            return ageResult;
+        }
+        document.getElementById('live-age').innerText = calculateLiveAge('2001-11-11');
+    </script>
+</body>
+</html>
